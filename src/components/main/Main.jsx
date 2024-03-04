@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 import ProductCard from '../productCard/ProductCard';
 import Paginator from '../paginator/Paginator';
 import Header from '../header/Header';
-import { errorChange } from '../../store/ProductSlice';
 
 
 const Main = () => {
@@ -38,8 +37,8 @@ const Main = () => {
   }, [page])
 
   useEffect(() => {
+    console.log(1)
     if (error !== '') {
-      errorChange()
       if (ids.length === 0) {
         setTimeout(() => {
           dispatch(init())
