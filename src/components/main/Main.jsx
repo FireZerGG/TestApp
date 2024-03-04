@@ -61,11 +61,6 @@ const Main = () => {
   return (
     <>
         <Header setPage = {setPage} changeResetPage = {changeResetPage} setResultFromSearch = {setResultFromSearch} />
-        {resultFromSearch && <div className={c.resetBtn_container}>
-          <button onClick={resetSearch} className={c.resetBtn}>
-            сбросить результаты поиска
-          </button>
-        </div>}
 
         { error !== ''
         
@@ -76,6 +71,11 @@ const Main = () => {
         ? <h1 className={c.info}>Загрузка...</h1> 
 
         : <>
+          {resultFromSearch && <div className={c.resetBtn_container}>
+            <button onClick={resetSearch} className={c.resetBtn}>
+              сбросить результаты поиска
+            </button>
+          </div>}
           <Paginator setPage={setPage} page={page} productsCount = {products.length}/>
           <ul className={c.container}> {productsList} </ul>
           <Paginator setPage={setPage} page={page} productsCount = {products.length}/>
