@@ -56,7 +56,7 @@ const Main = () => {
   const resetSearch = () => {
     dispatch(init())
     setResultFromSearch(false)
-
+    setPage(1)
   }
 
   return (
