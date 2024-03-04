@@ -10,7 +10,7 @@ let day = Math.floor((fullDate.getDate()) / 10) !== 0 ? fullDate.getDate() : `0$
 let date = `${year}${month}${day}`
 
 const instance = axios.create({
-    baseURL: 'http://api.valantis.store:40000/',
+    baseURL: 'https://api.valantis.store:41000/',
     headers: {
         "X-Auth": md5(`Valantis_${date}`),
     }

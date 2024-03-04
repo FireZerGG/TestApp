@@ -80,12 +80,7 @@ const Main = () => {
           <ul className={c.container}> {productsList} </ul>
           <Paginator setPage={setPage} page={page} productsCount = {products.length}/>
         </>
-
         }
-
-
-
-        
     </>
   )
 }
