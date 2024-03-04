@@ -2,9 +2,9 @@
     margin: 5px;
     display: flex;
     justify-content: space-between;
-    height: 50px;
     padding: 5px 9px 5px 9px;
     border-bottom: 2px solid black;
+    height: 100%;
 }
 
 .name {
