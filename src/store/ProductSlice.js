@@ -20,6 +20,10 @@ const productSlice = createSlice({
             state.error = action.payload
         },
 
+        errorChange(state) {
+            state.error += '.'
+        },
+
         initialize(state, action) {
             state.isLoading = false
             state.error = ''
@@ -73,4 +77,4 @@ const productSlice = createSlice({
 })
 
 export default productSlice.reducer
-export const {fetching, fetchingError, setProducts, setSearchRes, setIds, initialize} = productSlice.actions
+export const {fetching, fetchingError, errorChange,  setProducts, setSearchRes, setIds, initialize} = productSlice.actions

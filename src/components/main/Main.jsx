@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import ProductCard from '../productCard/ProductCard';
 import Paginator from '../paginator/Paginator';
 import Header from '../header/Header';
+import { errorChange } from '../../store/ProductSlice';
 
 
 const Main = () => {
@@ -38,6 +39,7 @@ const Main = () => {
 
   useEffect(() => {
     if (error !== '') {
+      errorChange()
       if (ids.length === 0) {
         setTimeout(() => {
           dispatch(init())
@@ -76,9 +78,15 @@ const Main = () => {
               сбросить результаты поиска
             </button>
           </div>}
-          <Paginator setPage={setPage} page={page} productsCount = {products.length}/>
-          <ul className={c.container}> {productsList} </ul>
-          <Paginator setPage={setPage} page={page} productsCount = {products.length}/>
+          {products.length === 0 
+
+            ? <h2>Ничего не найдено</h2>
+
+            : <>
+              <Paginator setPage={setPage} page={page} productsCount = {products.length}/>
+              <ul className={c.container}> {productsList} </ul>
+              <Paginator setPage={setPage} page={page} productsCount = {products.length}/>
+            </>}
         </>
         }
     </>
