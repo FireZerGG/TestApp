@@ -1,0 +1,36 @@
+.card {
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    padding: 5px 9px 5px 9px;
+    border-bottom: 2px solid black;
+}
+
+.name {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.id {
+    font-size: 12px;
+}
+
+.info {
+    display: flex;
+    width: 360px;
+    justify-content: space-between;
+}
+
+.brand {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 2.6;
+}
+
+.price {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 2.7;
+}
+

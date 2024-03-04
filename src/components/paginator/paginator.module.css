@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.display_none {
+    display: none;
+}
+
+.btn {
+    border: none;
+    background-color: white;
+    color: rgb(93, 190, 158);
+    transition: color 0.4s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    color: rgb(55, 121, 98)
+}
