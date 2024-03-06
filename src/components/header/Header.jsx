@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import c from './header.module.css'
 import { useDispatch } from 'react-redux'
 import { getSearchRes } from '../../store/ActionCreators'
+import triangle from './triangle.svg'
 
 
 const Header = ({setPage, changeResetPage, setResultFromSearch}) => {
@@ -56,6 +57,9 @@ const Header = ({setPage, changeResetPage, setResultFromSearch}) => {
             onMouseEnter={filterMouseOn}
             onMouseLeave={filterMouseOff}>
             Искать по
+            <div className={c.triangle_container}>
+                <img src={triangle} className={c.triangle} alt=''/>
+            </div>
         </div>
 
         {fieldsMenu && 
@@ -64,17 +68,17 @@ const Header = ({setPage, changeResetPage, setResultFromSearch}) => {
             onMouseLeave={filterMouseOff}>
                 <div className={c.field}
                 onClick={() => changePlaceholder('бренду')}>
-                    по брэнду
+                    брэнду
                 </div>
 
                 <div className={c.field}
                 onClick={() => changePlaceholder('цене')}>
-                    по цене
+                    цене
                 </div>
 
                 <div className={c.field}
                 onClick={() => changePlaceholder('названию')}>
-                    по названию
+                    названию
                 </div>
         </div>}
 

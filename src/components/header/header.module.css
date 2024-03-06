@@ -8,13 +8,21 @@
     text-align: center;
     line-height: 2.2;
     font-size: 17px;
-    width: 80px;
+    width: 99px;
     height: 40px;
     border: 1px solid black;
     border-right: none;
     cursor: pointer;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    padding-left: 3px;
+}
+
+.triangle {
+    transform: translateY(2px);
 }
 
 .search {
@@ -43,7 +51,7 @@
     border: 1px solid black;
     padding: 7px;
     position:absolute ;
-    left: 156px;
+    left: 167px;
     display: flex;
     flex-direction: column;
     gap: 7px;
@@ -58,4 +66,9 @@
     line-height: 2.3;
     font-size: 20px;
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.field:hover {
+    background-color: rgb(238, 238, 238);
 }

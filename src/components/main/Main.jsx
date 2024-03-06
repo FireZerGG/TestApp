@@ -37,7 +37,6 @@ const Main = () => {
   }, [page])
 
   useEffect(() => {
-    console.log(1)
     if (error !== '') {
       if (ids.length === 0) {
         setTimeout(() => {
