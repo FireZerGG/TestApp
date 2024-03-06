@@ -5,7 +5,7 @@ import { getSearchRes } from '../../store/ActionCreators'
 import triangle from './triangle.svg'
 
 
-const Header = ({setPage, changeResetPage, setResultFromSearch}) => {
+const Header = ({setPage, changeResetPage, setResultFromSearch, setQuery, setQueryParams}) => {
 
     const dispatch = useDispatch()
 
@@ -32,16 +32,22 @@ const Header = ({setPage, changeResetPage, setResultFromSearch}) => {
     }
 
     const search = (e) => {
+
+        setQuery('getSearchRes')
+
         if (e.keyCode === 13 || e.type === 'click') {
             switch (inputPlaceholder) {
                 case 'названию':
                     dispatch(getSearchRes('product', inputText))
+                    setQueryParams(['product', inputText])
                     break
                 case 'цене':
                     dispatch(getSearchRes('price', Number(inputText)))
+                    setQueryParams(['price', Number(inputText)])
                     break
                 case 'бренду':
                     dispatch(getSearchRes('brand', inputText))
+                    setQueryParams(['brand', inputText])
                     break
             }
             setInputText('')

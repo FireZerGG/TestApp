@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import c from './main.module.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts, init } from '../../store/ActionCreators';
+import { getProducts, init, getSearchRes } from '../../store/ActionCreators';
 import { useEffect } from 'react';
 import ProductCard from '../productCard/ProductCard';
 import Paginator from '../paginator/Paginator';
@@ -18,11 +18,17 @@ const Main = () => {
   const error = useSelector(state => state.products.error)
 
   const [page, setPage] = useState(1)
-  const [firstRender, changeFirstRender] = useState(true)
   const [resetPage, changeResetPage] = useState(false)
+
+  const [firstRender, changeFirstRender] = useState(true)
   const [resultFromSearch, setResultFromSearch] = useState(false)
 
+  const [query, setQuery] = useState('')
+  const [queryParams, setQueryParams] = useState([])
+
+
   useEffect(() => {
+    setQuery('init')
     dispatch(init())
   },[])
 
@@ -30,6 +36,7 @@ const Main = () => {
 
   useEffect(() => {
     if (!firstRender && !resetPage) {
+      setQuery('getProducts')
       dispatch(getProducts(currentIds))
     }
     changeResetPage(false)
@@ -38,18 +45,26 @@ const Main = () => {
 
   useEffect(() => {
     if (error !== '') {
-      if (ids.length === 0) {
-        setTimeout(() => {
-          dispatch(init())
-        }, 2000);
-      } else {
-        setTimeout(() => {
-          dispatch(getProducts(currentIds))
-        }, 2000);
+      switch (query) {
+        case 'init': 
+          setTimeout(() => {
+            dispatch(init())
+          }, 2000)
+          break
+        case 'getProducts': 
+          setTimeout(() => {
+            dispatch(getProducts(currentIds))
+          }, 2000)
+          break
+        case 'getSearchRes':
+          setTimeout(() => {
+            dispatch(getSearchRes(queryParams[0], queryParams[1]))
+          }, 2000)
+          break
       }
     }
   }, [error])
-  
+
   const productsList = products.map((product, index) =>  <ProductCard product = {product} key = {index}/>)
 
   const resetSearch = () => {
@@ -60,13 +75,17 @@ const Main = () => {
 
   return (
     <>
-        <Header setPage = {setPage} changeResetPage = {changeResetPage} setResultFromSearch = {setResultFromSearch} />
+        <Header setPage = {setPage} 
+                changeResetPage = {changeResetPage} 
+                setResultFromSearch = {setResultFromSearch} 
+                setQuery = {setQuery} 
+                setQueryParams = {setQueryParams}/>
 
         { error !== ''
         
         ? <h3 className={c.info}>Ошибка сервера... перезагрузка</h3>
         
-        : isLoading 
+        : isLoading
         
         ? <h1 className={c.info}>Загрузка...</h1> 
 
@@ -76,6 +95,7 @@ const Main = () => {
               сбросить результаты поиска
             </button>
           </div>}
+
           {products.length === 0 
 
             ? <h2>Ничего не найдено</h2>
