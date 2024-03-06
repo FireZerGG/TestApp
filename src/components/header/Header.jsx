@@ -13,15 +13,6 @@ const Header = ({setPage, changeResetPage, setResultFromSearch, setQuery, setQue
     const [inputPlaceholder, setInputPlaceholder] = useState('названию')
     const [inputText, setInputText] = useState('')
 
-
-    const filterMouseOn = () => {
-        setFieldsMenu(true)
-    }
-
-    const filterMouseOff = () => {
-        setFieldsMenu(false)
-    }
-
     const changePlaceholder = (text) => {
         setFieldsMenu(false)
         setInputPlaceholder(text)
@@ -60,8 +51,8 @@ const Header = ({setPage, changeResetPage, setResultFromSearch, setQuery, setQue
     return (
     <div className={c.container}>
         <div className={c.filter} 
-            onMouseEnter={filterMouseOn}
-            onMouseLeave={filterMouseOff}>
+            onMouseEnter={() => setFieldsMenu(true)}
+            onMouseLeave={() => setFieldsMenu(false)}>
             Искать по
             <div className={c.triangle_container}>
                 <img src={triangle} className={c.triangle} alt=''/>
@@ -70,8 +61,8 @@ const Header = ({setPage, changeResetPage, setResultFromSearch, setQuery, setQue
 
         {fieldsMenu && 
             <div className={c.fields}
-            onMouseEnter={filterMouseOn}
-            onMouseLeave={filterMouseOff}>
+            onMouseEnter={() => setFieldsMenu(true)}
+            onMouseLeave={() => setFieldsMenu(false)}>
                 <div className={c.field}
                 onClick={() => changePlaceholder('бренду')}>
                     брэнду

@@ -45,23 +45,19 @@ const Main = () => {
 
   useEffect(() => {
     if (error !== '') {
-      switch (query) {
-        case 'init': 
-          setTimeout(() => {
+      setTimeout(() => {
+        switch (query) {
+          case 'init': 
             dispatch(init())
-          }, 2000)
-          break
-        case 'getProducts': 
-          setTimeout(() => {
+            break
+          case 'getProducts': 
             dispatch(getProducts(currentIds))
-          }, 2000)
-          break
-        case 'getSearchRes':
-          setTimeout(() => {
+            break
+          case 'getSearchRes':
             dispatch(getSearchRes(queryParams[0], queryParams[1]))
-          }, 2000)
-          break
-      }
+            break
+        }
+      }, 2000)
     }
   }, [error])
 

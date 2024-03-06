@@ -1,7 +1,6 @@
 import React from 'react'
 import c from './paginator.module.css'
 
-
 const Paginator = ({setPage, page, productsCount}) => {
 
     return (
